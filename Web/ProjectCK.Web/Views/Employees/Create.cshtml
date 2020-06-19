@@ -1,0 +1,66 @@
+﻿@model EmployeesInputViewModel
+
+@{
+    this.ViewData["Title"] = "New Employee";
+}
+
+<div class="text-center">
+    <h1>Create new Employee now!</h1>
+
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-warning"></div>
+        <section class="form-label">
+            <input type="text" asp-for="FirstName" placeholder="Your First name...">
+            <i class="fas fa-user"></i>
+            <span asp-validation-for="FirstName" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="LastName" placeholder="Your Last name...">
+            <i class="fas fa-user"></i>
+            <span asp-validation-for="LastName" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="Birthday" placeholder="Your Date of Birth...">
+            <i class="fas fa-birthday-cake"></i>
+            <span asp-validation-for="Birthday" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="Gender" placeholder="Your Sex exampl and following format (Male OR Female)...">
+            <i class="fas fa-venus-mars"></i>
+            <span asp-validation-for="Gender" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="Street" placeholder="Street...">
+            <i class="fas fa-road"></i>
+            <span asp-validation-for="Street" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="HouseNumber" placeholder="House number...">            
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <span asp-validation-for="HouseNumber" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="City" placeholder="City...">
+            <i class="fas fa-sort-numeric-up"></i>
+            <span asp-validation-for="City" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="Country" placeholder="Country...">
+            <i class="fas fa-globe-asia"></i>
+            <span asp-validation-for="Country" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="ZipCode" placeholder="ZipCode...">
+            <i class="fas fa-address-card"></i>
+            <span asp-validation-for="ZipCode" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="text" asp-for="Department" placeholder="Department name...">
+            <i class="fas fa-crosshairs"></i>
+            <span asp-validation-for="Department" class="font-weight-bold text-warning"></span>
+        </section>
+        <section class="form-label">
+            <input type="submit" value="Create">
+        </section>
+    </form>
+</div>

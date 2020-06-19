@@ -1,0 +1,103 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1.3rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url(../images/Razer-BlackWidow-2019-Close-Up.png);
+    font-size: 1.3rem;
+}
+
+.text-center {
+    color: whitesmoke;
+}
+
+.table {
+    color: whitesmoke;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+footer .container {
+    color: whitesmoke;
+}
+
+.form-label {
+    position: relative;
+    margin: 0.75rem 0;
+}
+
+    .form-label i {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: black;
+        transition: 3ms;
+    }
+
+    .form-label input:not([type='submit']) {
+        padding-left: 2.5rem;
+    }
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=tel] {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    width: 100%;
+    border: none;
+    /* border: var(--main-border-width) solid var(--main-text-gray); */
+    padding: 1rem 1rem 1rem 0.35rem;
+    font-size: 0.85rem;
+}

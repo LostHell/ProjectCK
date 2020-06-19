@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EmployeeOutputViewModel>
+@{
+    this.ViewData["Title"] = "All Employees";
+}
+
+<div>
+    <select class="filterby age">
+        <option value="all" selected onclick="filterByAge('all')">All ages</option>
+        <option value="18-25" onclick="filterByAge('18-25')">18 to 25</option>
+        <option value="26-35" onclick="filterByAge('26-35')">26 to 35</option>
+        <option value="36-50" onclick="filterByAge('36-50')">36 to 50</option>
+        <option value="51" onclick="filterByAge('51')">Over 51</option>
+    </select>
+    <select class="filterby gender">
+        <option value="all" selected onclick="filterByGender('all')">All Sex</option>
+        <option value="Male" onclick="filterByGender('male')">Male</option>
+        <option value="Female" onclick="filterByGender('female')">Female</option>
+    </select>
+    <select class="filterby department">
+        <option value="all" selected="selected" onclick="filterByDepartment('all')">All Departments</option>
+        <option value="IT" onclick="filterByDepartment('it')">IT</option>
+        <option value="Marketing" onclick="filterByDepartment('marketing')">MARKETING</option>
+        <option value="Logistic" onclick="filterByDepartment('logistic')">LOGISTIC</option>
+        <option value="QA" onclick="filterByDepartment('qa')">QA</option>
+    </select>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fullname</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.FirstName @customer.LastName</td>
+                    <td>@(Math.Round((DateTime.UtcNow-DateTime.Parse(customer.Birthday)).TotalDays/365))</td>
+                    <td>@customer.Gender</td>
+                    <td>@customer.Address.Street @customer.Address.HouseNumber</td>
+                    <td>@customer.Department.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
