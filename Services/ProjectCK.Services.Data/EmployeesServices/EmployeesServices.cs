@@ -12,42 +12,42 @@
 
     public class EmployeesServices : IEmployeesServices
     {
-        private readonly IRepository<Employee> repositoryCustomer;
+        private readonly IRepository<Employee> repositoryEmployee;
         private readonly IRepository<Address> repositoryAddress;
         private readonly IRepository<Department> repositoryDepartment;
 
         public EmployeesServices(
-            IRepository<Employee> repositoryCustomer,
+            IRepository<Employee> repositoryEmployee,
             IRepository<Address> repositoryAddress,
             IRepository<Department> repositoryDepartment)
         {
-            this.repositoryCustomer = repositoryCustomer;
+            this.repositoryEmployee = repositoryEmployee;
             this.repositoryAddress = repositoryAddress;
             this.repositoryDepartment = repositoryDepartment;
         }
 
         public async Task<bool> ExistEmployee(string firstName, string lastName, string birthday)
         {
-            var customer = await this.repositoryCustomer.All()
+            var employee = await this.repositoryEmployee.All()
                 .AnyAsync(x => x.FirstName == firstName && x.LastName == lastName && x.Birthday == birthday);
 
-            return customer;
+            return employee;
         }
 
-        public async Task AddNewCustomer(EmployeesInputViewModel input)
+        public async Task AddNewEmployee(EmployeesInputViewModel input)
         {
-            var currentCustomer = await this.repositoryCustomer.All()
+            var currentEmployee = await this.repositoryEmployee.All()
                 .FirstOrDefaultAsync(x => x.FirstName == input.FirstName &&
                 x.LastName == input.LastName &&
                 x.Birthday == input.Birthday);
 
-            if (currentCustomer != null)
+            if (currentEmployee != null)
             {
                 // Here can return string message for that the same customer is found!
                 return;
             }
 
-            currentCustomer = new Employee
+            currentEmployee = new Employee
             {
                 FirstName = input.FirstName,
                 LastName = input.LastName,
@@ -69,8 +69,8 @@
                 Name = input.Department,
             };
 
-            currentCustomer.Address = address;
-            currentCustomer.Department = department;
+            currentEmployee.Address = address;
+            currentEmployee.Department = department;
 
             await this.repositoryAddress.AddAsync(address);
             await this.repositoryAddress.SaveChangesAsync();
@@ -78,15 +78,16 @@
             await this.repositoryDepartment.AddAsync(department);
             await this.repositoryDepartment.SaveChangesAsync();
 
-            await this.repositoryCustomer.AddAsync(currentCustomer);
-            await this.repositoryCustomer.SaveChangesAsync();
+            await this.repositoryEmployee.AddAsync(currentEmployee);
+            await this.repositoryEmployee.SaveChangesAsync();
         }
 
         public async Task<ICollection<EmployeeOutputViewModel>> GetAllEmployees()
         {
-            var customers = await this.repositoryCustomer.All().To<EmployeeOutputViewModel>().ToListAsync();
+            var employee = await this.repositoryEmployee.All()
+                .To<EmployeeOutputViewModel>().ToListAsync();
 
-            return customers;
+            return employee;
         }
     }
 }

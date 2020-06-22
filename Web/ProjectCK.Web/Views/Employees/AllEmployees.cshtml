@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<EmployeeOutputViewModel>
+
 @{
     this.ViewData["Title"] = "All Employees";
 }
@@ -34,14 +35,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model)
+            @foreach (var employee in Model)
             {
                 <tr>
-                    <td>@customer.FirstName @customer.LastName</td>
-                    <td>@(Math.Round((DateTime.UtcNow-DateTime.Parse(customer.Birthday)).TotalDays/365))</td>
-                    <td>@customer.Gender</td>
-                    <td>@customer.Address.Street @customer.Address.HouseNumber</td>
-                    <td>@customer.Department.Name</td>
+                    <td>@employee.FirstName @employee.LastName</td>
+                    <td>@(Math.Round((DateTime.UtcNow-DateTime.Parse(employee.Birthday)).TotalDays/365))</td>
+                    <td>@employee.Gender</td>
+                    <td>@employee.Address.Street @employee.Address.HouseNumber</td>
+                    <td>@employee.Department.Name</td>
                 </tr>
             }
         </tbody>

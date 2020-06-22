@@ -8,7 +8,7 @@
     <h1>Create new Employee now!</h1>
 
     <form asp-action="Create" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-warning"></div>
+        <div asp-validation-summary="All" class="text-warning"></div>
         <section class="form-label">
             <input type="text" asp-for="FirstName" placeholder="Your First name...">
             <i class="fas fa-user"></i>

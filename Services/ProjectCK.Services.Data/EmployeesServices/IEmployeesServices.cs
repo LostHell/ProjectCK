@@ -9,7 +9,7 @@
     {
         Task<bool> ExistEmployee(string firstName, string lastName, string birthday);
 
-        Task AddNewCustomer(EmployeesInputViewModel input);
+        Task AddNewEmployee(EmployeesInputViewModel input);
 
         Task<ICollection<EmployeeOutputViewModel>> GetAllEmployees();
     }

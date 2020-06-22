@@ -8,11 +8,11 @@
 
     public class EmployeesController : Controller
     {
-        private readonly IEmployeesServices customersServices;
+        private readonly IEmployeesServices employeesServices;
 
-        public EmployeesController(IEmployeesServices customersServices)
+        public EmployeesController(IEmployeesServices employeesServices)
         {
-            this.customersServices = customersServices;
+            this.employeesServices = employeesServices;
         }
 
         public IActionResult Create()
@@ -34,23 +34,24 @@
                 return this.View(input);
             }
 
-            var existCustomer = await this.customersServices.ExistEmployee(input.FirstName, input.LastName, input.Birthday);
+            var existEmployee = await this.employeesServices
+                .ExistEmployee(input.FirstName, input.LastName, input.Birthday);
 
-            if (existCustomer == true)
+            if (existEmployee == true)
             {
                 this.ModelState.AddModelError(string.Empty, "Sorry, customer is already exists!");
                 return this.View(input);
             }
 
-            await this.customersServices.AddNewCustomer(input);
+            await this.employeesServices.AddNewEmployee(input);
             return this.RedirectToAction();
         }
 
         public async Task<IActionResult> AllEmployees()
         {
-            var customers = await this.customersServices.GetAllEmployees();
+            var employee = await this.employeesServices.GetAllEmployees();
 
-            return this.View(customers);
+            return this.View(employee);
         }
     }
 }
