@@ -5,25 +5,19 @@
 
         const department = persons[i].getElementsByTagName('td')[4];
 
-        if (parameters === 'all') {
-            persons[i].style.display = '';
-        }
+        persons[i].style.display = '';
 
         if (persons[i].style.display !== 'none' && parameters !== 'all') {
 
             if (parameters === 'it' && department.textContent.toLowerCase() === parameters) {
                 persons[i].style.display = '';
-            }
-            else if (parameters === 'marketing' && department.textContent.toLowerCase() === parameters) {
+            } else if (parameters === 'marketing' && department.textContent.toLowerCase() === parameters) {
                 persons[i].style.display = '';
-            }
-            else if (parameters === 'logistic' && department.textContent.toLowerCase() === parameters) {
+            } else if (parameters === 'logistic' && department.textContent.toLowerCase() === parameters) {
                 persons[i].style.display = '';
-            }
-            else if (parameters === 'qa' && department.textContent.toLowerCase() === parameters) {
+            } else if (parameters === 'qa' && department.textContent.toLowerCase() === parameters) {
                 persons[i].style.display = '';
-            }
-            else {
+            } else {
                 persons[i].style.display = 'none';
             }
         }

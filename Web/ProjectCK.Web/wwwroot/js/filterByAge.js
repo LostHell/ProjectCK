@@ -16,19 +16,15 @@
 
         const age = persons[i].getElementsByTagName('td')[1];
 
-        if (range[0] === 'all') {
-            persons[i].style.display = '';
-        }
+        persons[i].style.display = '';
 
         if (persons[i].style.display !== 'none' && range[0] !== 'all') {
 
             if (minAge <= age.textContent && maxAge >= age.textContent) {
                 persons[i].style.display = '';
-            }
-            else if (range[0] === '51' && age.textContent >= range[0]) {
+            } else if (range[0] === '51' && age.textContent >= range[0]) {
                 persons[i].style.display = '';
-            }
-            else {
+            } else {
                 persons[i].style.display = 'none';
             }
         }

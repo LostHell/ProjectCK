@@ -5,18 +5,15 @@
 
         const gender = persons[i].getElementsByTagName('td')[2];
 
-        if (parameters === 'all') {
-            persons[i].style.display = '';
-        }
+        persons[i].style.display = '';
+            
         if (persons[i].style.display !== 'none' && parameters !== 'all') {
 
             if (parameters === 'male' && gender.textContent.toLowerCase() === parameters) {
                 persons[i].style.display = '';
-            }
-            else if (parameters === 'female' && gender.textContent.toLowerCase() === parameters) {
+            } else if (parameters === 'female' && gender.textContent.toLowerCase() === parameters) {
                 persons[i].style.display = '';
-            }
-            else {
+            } else {
                 persons[i].style.display = 'none';
             }
         }
