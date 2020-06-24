@@ -64,27 +64,27 @@
                 "IT"),
             };
 
-            var employees = new List<(string FirstName, string LastName, string Birthday, string Gender)>
+            var employees = new List<(string FirstName, string LastName, DateTime Birthday, string Gender)>
             {
                 (
                 "Enes",
                 "Karadzhov",
-                "01.01.1990",
+                DateTime.Parse("01.01.1990"),
                 "Male"),
                 (
                 "Luis",
                 "Matias",
-                "01.01.1991",
+                DateTime.Parse("01.01.1991"),
                 "Male"),
                 (
                 "Linda",
                 "Matias",
-                "01.01.1967",
+                DateTime.Parse("01.01.1967"), 
                 "Female"),
                 (
                 "Gema",
                 "Theas",
-                "01.01.1976",
+                DateTime.Parse("01.01.1976"), 
                 "Female"),
             };
 

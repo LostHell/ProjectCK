@@ -1,4 +1,6 @@
-﻿namespace ProjectCK.Web.ViewModels.Employees
+﻿using System;
+
+namespace ProjectCK.Web.ViewModels.Employees
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -13,10 +15,9 @@
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Birthday is required!")]
-        [RegularExpression(@"^[0-9]{2}\.*\/*[0-9]{2}\.*\/*[0-9]{4}$", ErrorMessage = "Birthday must following (01.01.1999 or 01/01/1999)!")]
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
-        [Required(ErrorMessage = "Sex is required!")]
+        [Required(ErrorMessage = "Gender is required!")]
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Street is required!")]
@@ -27,7 +28,7 @@
         [RegularExpression(@"^[0-9]{3}[a-z]{0,1}$", ErrorMessage = "House number must be valid following (112 or 112a)!")]
         public string HouseNumber { get; set; }
 
-        [Required(ErrorMessage = "City is requred!")]
+        [Required(ErrorMessage = "City is required!")]
         [StringLength(30, ErrorMessage = "City must be between 5 and 30 characters long!", MinimumLength = 5)]
         public string City { get; set; }
 

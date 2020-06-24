@@ -39,7 +39,7 @@
             {
                 <tr>
                     <td>@employee.FirstName @employee.LastName</td>
-                    <td>@(Math.Round((DateTime.UtcNow-DateTime.Parse(employee.Birthday)).TotalDays/365))</td>
+                    <td>@(Math.Round((DateTime.UtcNow-employee.Birthday).TotalDays/365))</td>
                     <td>@employee.Gender</td>
                     <td>@employee.Address.Street @employee.Address.HouseNumber</td>
                     <td>@employee.Department.Name</td>

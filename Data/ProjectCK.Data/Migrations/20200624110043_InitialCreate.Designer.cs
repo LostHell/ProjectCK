@@ -10,8 +10,8 @@ using ProjectCK.Data;
 namespace ProjectCK.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200619022048_InitalCreateDb")]
-    partial class InitalCreateDb
+    [Migration("20200624110043_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -304,10 +304,8 @@ namespace ProjectCK.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Birthday")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DepartmentId")
                         .IsRequired()

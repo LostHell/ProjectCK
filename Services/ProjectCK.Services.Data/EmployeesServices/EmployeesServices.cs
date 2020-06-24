@@ -26,7 +26,7 @@
             this.repositoryDepartment = repositoryDepartment;
         }
 
-        public async Task<bool> ExistEmployee(string firstName, string lastName, string birthday)
+        public async Task<bool> ExistEmployee(string firstName, string lastName, DateTime birthday)
         {
             var employee = await this.repositoryEmployee.All()
                 .AnyAsync(x => x.FirstName == firstName && x.LastName == lastName && x.Birthday == birthday);
@@ -38,8 +38,8 @@
         {
             var currentEmployee = await this.repositoryEmployee.All()
                 .FirstOrDefaultAsync(x => x.FirstName == input.FirstName &&
-                x.LastName == input.LastName &&
-                x.Birthday == input.Birthday);
+                                          x.LastName == input.LastName &&
+                                          x.Birthday == input.Birthday);
 
             if (currentEmployee != null)
             {
@@ -55,28 +55,42 @@
                 Gender = Enum.Parse<Gender>(input.Gender),
             };
 
-            var address = new Address
-            {
-                Street = input.Street,
-                HouseNumber = input.HouseNumber,
-                City = input.City,
-                Country = input.Country,
-                ZipCode = input.ZipCode,
-            };
+            var address = await this.repositoryAddress.All()
+                .FirstOrDefaultAsync(x =>
+                    x.Street == input.Street && x.HouseNumber == input.HouseNumber && x.ZipCode == input.ZipCode);
 
-            var department = new Department
+            if (address == null)
             {
-                Name = input.Department,
-            };
+                address = new Address
+                {
+                    Street = input.Street,
+                    HouseNumber = input.HouseNumber,
+                    City = input.City,
+                    Country = input.Country,
+                    ZipCode = input.ZipCode,
+                };
+
+                await this.repositoryAddress.AddAsync(address);
+                await this.repositoryAddress.SaveChangesAsync();
+            }
+
+            var department = await this.repositoryDepartment.All()
+                .FirstOrDefaultAsync(x => x.Name == input.Department);
+
+            if (department == null)
+            {
+                department = new Department
+                {
+                    Name = input.Department,
+                };
+
+                await this.repositoryDepartment.AddAsync(department);
+                await this.repositoryDepartment.SaveChangesAsync();
+            }
+
 
             currentEmployee.Address = address;
             currentEmployee.Department = department;
-
-            await this.repositoryAddress.AddAsync(address);
-            await this.repositoryAddress.SaveChangesAsync();
-
-            await this.repositoryDepartment.AddAsync(department);
-            await this.repositoryDepartment.SaveChangesAsync();
 
             await this.repositoryEmployee.AddAsync(currentEmployee);
             await this.repositoryEmployee.SaveChangesAsync();

@@ -21,9 +21,7 @@
         [MaxLength(20)]
         public string LastName { get; set; }
 
-        [Required]
-        [MaxLength(10)]
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         [Required]
         public Gender Gender { get; set; }

@@ -1,4 +1,6 @@
-﻿namespace ProjectCK.Web.ViewModels.Employees
+﻿using System;
+
+namespace ProjectCK.Web.ViewModels.Employees
 {
     using ProjectCK.Data.Models;
     using ProjectCK.Services.Mapping;
@@ -9,7 +11,7 @@
 
         public string LastName { get; set; }
 
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         public string Gender { get; set; }
 
